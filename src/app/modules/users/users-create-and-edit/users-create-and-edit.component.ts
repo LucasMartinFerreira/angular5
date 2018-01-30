@@ -7,12 +7,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersCreateAndEditComponent implements OnInit {
 
+	private hiddenAdd :  boolean;
+
+	private hiddenUpdate : boolean;
+
+	private hiddenError : boolean;
+
+
+	constructor() { 
+
+		this.hiddenAdd = false;
+		this.hiddenUpdate = true;
+		this.hiddenError = true;
+
+	}
+
+	ngOnInit() {
+
+		
+	}
+
+
+	private addUser(){
+
+		console.log("Add user function");
+	}
 
 
 
-  constructor() { }
+	private updateUser(){
 
-  ngOnInit() {
-  }
+		console.log("Update user function");
+	}
 
 }
