@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BlockListElementsComponent } from './../../../components/block-list-elements/block-list-elements.component'
 
 @Component({
   selector: 'app-users-list',
@@ -8,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 
 export class UsersListComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(public blockListElementsComponent :  BlockListElementsComponent) {
+    this.blockListElementsComponent
+  }
 
   ngOnInit() {
+    console.log('Qué hemos liao?')
   }
 
 }

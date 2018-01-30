@@ -1,0 +1,14 @@
+.content-block-list{
+  float: left;
+  width: 100%;
+  height : calc(100vh - 250px);
+  ul{
+    list-style-type: none;
+    .content-block-list_item{
+
+      display: grid;
+      grid-template-columns: 70% 30%;
+      align-items: center;
+    }
+  }
+}

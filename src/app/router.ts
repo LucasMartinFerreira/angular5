@@ -1,11 +1,11 @@
 import {RouterModule, Routes} from "@angular/router";
-import { PostListComponent } from "./modules/posts/post-list/post-list.component"
-import { UsersListComponent } from './modules/users/users-list/users-list.component'
+import { PostListComponent } from "./modules/posts/post-list/post-list.component";
+import { UsersListComponent } from './modules/users/users-list/users-list.component';
+import { BlockListElementsComponent } from './components/block-list-elements/block-list-elements.component';
 
 const router : Routes = <Routes>[
-  {path: 'posts', component: PostListComponent},
-  {path: 'users', component: UsersListComponent},
-  {path: '**', pathMatch: 'full', redirectTo: 'posts'}
+  {path: 'blockListComponent/:name', component: BlockListElementsComponent},
+  {path: '**', pathMatch: 'full', redirectTo: 'blockListComponent/posts'}
 ];
 
 export const app_routing = RouterModule.forRoot(router, {useHash:true})

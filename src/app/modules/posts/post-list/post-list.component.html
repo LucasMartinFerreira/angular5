@@ -1,7 +1,30 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-   Bienvenido a  {{ title }}!
-  </h1>
-  <img width="300" alt="Aplicación Angular 5" src="./../assets/images/Programador_Contento.gif">
+
+<div class="content-post-list__info">
+  <li>
+    Id: {{objectItem.id}}
+  </li>
+  <li>
+    Título: {{objectItem.title}}
+  </li>
+  <li>
+    Cuerpo: {{objectItem.body}}
+  </li>
+  <li>
+    UserId: {{objectItem.userId}}
+  </li>
 </div>
+<div class="content-post-list__buttons">
+
+  <button type="button" class="btn btn-primary btn-md" (click)="editPost(post)">Editar</button>
+  <button type="button" class="btn btn-primary btn-md" (click)="deletePost()">Eliminar</button>
+  <button type="button" class="btn btn-primary btn-md">Ver Comentarios</button>
+</div>
+<div class="content-post-list__separate-li">
+
+</div>
+<div class="content-post-list__separate-li"></div>
+
+
+
+
