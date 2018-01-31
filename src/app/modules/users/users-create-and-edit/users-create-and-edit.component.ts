@@ -1,7 +1,7 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { User } from '../../../models/users/user';
-import { AppModule} from './../../../app.module';
-
+import { UsersService } from '../../../services/users/users.service';
+import { AppComponent} from './../../../app.component';
 
 @Component({
   selector: 'app-users-create-and-edit',
@@ -20,7 +20,7 @@ export class UsersCreateAndEditComponent implements OnInit {
 
  	
 	//Constructor de la clase.
-	constructor() { 
+	constructor(public usersService: UsersService, public appComponent:AppComponent) { 
 
 	}
 
@@ -36,29 +36,39 @@ export class UsersCreateAndEditComponent implements OnInit {
 	}
 
 
+	//Función que crea un nuevo usuario.
 	private addUser(){
-
-		console.log("Inicio funcion addUser");
+		
+		//mostramos el spinner
+		this.appComponent.isLoadingActive = true;
 
 		if(this.validateUser()){
 			console.log("El usuario es correcto.");
 
+			this.usersService.addUser(this.user).subscribe(
+				result => {
+				  this.user = result;		  
+				  console.log('Usuario creado correctamente');
+				  this.appComponent.isLoadingActive = false;
+				},
+				error => {
+				  console.log('Error al crear el usuario.');
+				  this.appComponent.isLoadingActive = false;
+				}
+			  );
 
 
 
 
-			
 		}else{
 			console.log("El usuario no es correcto.");
 			this.hiddenError = false;
+			this.appComponent.isLoadingActive = false;
 		}
-
-
-		console.log("Find funcion addUser");
 	}
 
 
-
+	//Función que actualiza un nuevo usuario.
 	private updateUser(){
 
 		console.log("Inicio funcion updateUser");

@@ -14,4 +14,8 @@ export class UsersService {
     return this.httpClient.get(Constants.HOME_DEV +'/users', { headers: HeadersApp.getGeneralHeader()})
   }
 
+  public addUser(user:User): Observable <any>{
+    return this.httpClient.post(Constants.HOME_DEV +'/users/', user, { headers: HeadersApp.getGeneralHeader()});;
+  }
+
 }
