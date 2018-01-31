@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 /**Componentes**/
 import { UsersCreateAndEditComponent } from './users-create-and-edit/users-create-and-edit.component';
+import { UsersService } from '../../services/users/users.service';
 
 @NgModule({
   imports: [
@@ -15,6 +16,9 @@ import { UsersCreateAndEditComponent } from './users-create-and-edit/users-creat
   ],
   declarations: [
     UsersCreateAndEditComponent
+  ],
+  providers :[
+    UsersService
   ]
 })
 export class UserModule { }
