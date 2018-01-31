@@ -1,8 +1,17 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Constants } from '../../constants';
+import { HeadersApp } from '../../headers';
+import { User } from '../../models/users/user';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class UsersService {
 
-  constructor() { }
+  constructor(public httpClient :HttpClient) {};
+
+  public usersList() : Observable <any> {
+    return this.httpClient.get(Constants.HOME_DEV +'/users', { headers: HeadersApp.getGeneralHeader()})
+  }
 
 }

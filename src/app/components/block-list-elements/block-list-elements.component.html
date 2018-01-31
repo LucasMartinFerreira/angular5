@@ -3,6 +3,7 @@
   Location {{location}}
   <ul *ngFor="let data of arrayList">
     <app-post-list class="content-block-list_item" [item]="data" [itemList]="arrayList"></app-post-list>
+    <app-users-list class="content-block-list_item" [item]="data" [itemList]="arrayList"></app-users-list>
   </ul>
 </div>
 
