@@ -9,28 +9,26 @@
     	 ACTUALIZAR USUARIO
     </div>
 
-	<div class="show-modal-edit-user_content">
+    <div class="show-modal-edit-user_content">
       
       <div class="show-modal-edit-user_title">
         <label>Nombre:</label>
-
-       
-        
+        <input type="text" [(ngModel)]="user.name" >        
       </div>
 
       <div class="show-modal-edit-user_title">
         <label>Nombre de usuario:</label>
-        <input ng-model="UserController.user.username">
+        <input [(ngModel)]="user.username">
       </div>
 
       <div class="show-modal-edit-user_title">
         <label>Email:</label>
-        <input ng-model="UserController.user.email">
+        <input [(ngModel)]="user.email">
       </div>
 
       <div class="show-modal-edit-user_title">
         <label>Phone:</label>
-        <input ng-model="UserController.user.phone">
+        <input [(ngModel)]="user.phone">
       </div>
 
 

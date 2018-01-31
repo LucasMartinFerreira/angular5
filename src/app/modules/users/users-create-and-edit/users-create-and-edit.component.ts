@@ -1,7 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { User } from '../../../models/users/user';
-
-
+import { AppModule} from './../../../app.module';
 
 
 @Component({
@@ -11,52 +10,78 @@ import { User } from '../../../models/users/user';
 })
 export class UsersCreateAndEditComponent implements OnInit {
 
+	//Objeto usuario.
+	public user : User;
+
+	//Atributos que muestran u ocultan texto y/o botones.
 	private hiddenAdd :  boolean;
 	private hiddenUpdate : boolean;
 	private hiddenError : boolean;
 
- 	public user: User;
-
+ 	
+	//Constructor de la clase.
 	constructor() { 
 
-		this.user = new User();
-		this.user.name = "name0asfd";
-		
-		console.log("Constructor  User = ", this.user);
-		
+	}
+
+	//Inicialización de atributos.
+	ngOnInit() {
+
 		this.hiddenAdd = false;
 		this.hiddenUpdate = true;
 		this.hiddenError = true;
 
-
-		
-		
-
-	}
-
-	ngOnInit() {
-
-		this.user = new User();
-		this.user.name = "name0asfd";
-
-
-
-		console.log("Init. User = ", this.user);
-		
-		
+		//Inicializamos el objeto usuario.
+		this.user = new User();		
 	}
 
 
 	private addUser(){
 
-		console.log("Add user function");
+		console.log("Inicio funcion addUser");
+
+		if(this.validateUser()){
+			console.log("El usuario es correcto.");
+
+
+
+
+
+			
+		}else{
+			console.log("El usuario no es correcto.");
+			this.hiddenError = false;
+		}
+
+
+		console.log("Find funcion addUser");
 	}
 
 
 
 	private updateUser(){
 
-		console.log("Update user function");
+		console.log("Inicio funcion updateUser");
+
+
+
+		console.log("Find funcion updateUser");
+	}
+
+
+	//Validamos que todos los datos del usuario esten rellenos.
+	private validateUser(){
+
+		let validUser : boolean = true;
+
+		if(null===this.user || null==this.user.name || null===this.user.username || null==this.user.email 
+			|| null==this.user.phone || ""===this.user.name || ""===this.user.username || 
+			""===this.user.email || ""===this.user.phone){
+				console.log("Usuario no válido.");
+				validUser = false;
+			}
+
+		return validUser;
 	}
 
 }
