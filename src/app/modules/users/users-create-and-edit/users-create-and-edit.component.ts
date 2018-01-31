@@ -27,8 +27,8 @@ export class UsersCreateAndEditComponent implements OnInit {
 	//Inicialización de atributos.
 	ngOnInit() {
 
-		this.hiddenAdd = false;
-		this.hiddenUpdate = true;
+		this.hiddenAdd = true;
+		this.hiddenUpdate = false;
 		this.hiddenError = true;
 
 		//Inicializamos el objeto usuario.
@@ -57,9 +57,6 @@ export class UsersCreateAndEditComponent implements OnInit {
 				}
 			  );
 
-
-
-
 		}else{
 			console.log("El usuario no es correcto.");
 			this.hiddenError = false;
@@ -71,11 +68,29 @@ export class UsersCreateAndEditComponent implements OnInit {
 	//Función que actualiza un nuevo usuario.
 	private updateUser(){
 
-		console.log("Inicio funcion updateUser");
+		//mostramos el spinner
+		this.appComponent.isLoadingActive = true;
 
+		if(this.validateUser()){
+			console.log("El usuario es correcto.");
 
+			this.usersService.updateUser(this.user).subscribe(
+				result => {
+				  this.user = result;		  
+				  console.log('Usuario actualizado correctamente');
+				  this.appComponent.isLoadingActive = false;
+				},
+				error => {
+				  console.log('Error al actualizar el usuario.');
+				  this.appComponent.isLoadingActive = false;
+				}
+			  );
 
-		console.log("Find funcion updateUser");
+		}else{
+			console.log("El usuario no es correcto.");
+			this.hiddenError = false;
+			this.appComponent.isLoadingActive = false;
+		}
 	}
 
 

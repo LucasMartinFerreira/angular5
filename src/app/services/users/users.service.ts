@@ -14,8 +14,16 @@ export class UsersService {
     return this.httpClient.get(Constants.HOME_DEV +'/users', { headers: HeadersApp.getGeneralHeader()})
   }
 
+  //Función que crea un usuario.
   public addUser(user:User): Observable <any>{
     return this.httpClient.post(Constants.HOME_DEV +'/users/', user, { headers: HeadersApp.getGeneralHeader()});;
+  }
+
+  //Función que crea un usuario.
+  public updateUser(user:User): Observable <any>{
+    let url : string;
+    url = Constants.HOME_DEV +'/users/' + user.id;
+    return this.httpClient.patch(url, user, { headers: HeadersApp.getGeneralHeader()});;
   }
 
 }
