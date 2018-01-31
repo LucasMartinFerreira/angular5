@@ -3,6 +3,7 @@ import { User } from '../../../models/users/user';
 
 
 
+
 @Component({
   selector: 'app-users-create-and-edit',
   templateUrl: './users-create-and-edit.component.html',
@@ -11,30 +12,37 @@ import { User } from '../../../models/users/user';
 export class UsersCreateAndEditComponent implements OnInit {
 
 	private hiddenAdd :  boolean;
-
 	private hiddenUpdate : boolean;
+	private hiddenError : boolean;
 
-	private hiddenError : boolean;s
-
- 	private user: User;
+ 	public user: User;
 
 	constructor() { 
 
 		this.user = new User();
+		this.user.name = "name0asfd";
 		
-
+		console.log("Constructor  User = ", this.user);
+		
 		this.hiddenAdd = false;
 		this.hiddenUpdate = true;
 		this.hiddenError = true;
 
 
 		
-		this.user.name = "name0asfd";
+		
 
 	}
 
 	ngOnInit() {
 
+		this.user = new User();
+		this.user.name = "name0asfd";
+
+
+
+		console.log("Init. User = ", this.user);
+		
 		
 	}
 
