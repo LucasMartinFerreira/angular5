@@ -1,7 +1,13 @@
-<div class="app-content">
+<div class="content-app-header">
   <app-header></app-header>
+</div>
+<div class="content-app-nav-bar">
   <app-nav-bar></app-nav-bar>
+</div>
+
+<div class="content-app">
   <router-outlet></router-outlet>
+  <ngx-loading [show]="isLoadingActive" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
 </div>
 
 

@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpModule } from '@angular/http';
+
 
 
 /**Componentes**/
 import { UsersCreateAndEditComponent } from './users-create-and-edit/users-create-and-edit.component';
-import { UsersListComponent } from './users-list/users-list.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    HttpModule
   ],
   declarations: [
-    UsersCreateAndEditComponent,
-    UsersListComponent
+    UsersCreateAndEditComponent
   ]
 })
 export class UserModule { }

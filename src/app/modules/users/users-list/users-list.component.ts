@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MOCKUSERS } from '../../../models/users/mockUsers';
-import { User } from '../../../models/users/user';
-import { Input } from '@angular/core';
+import { BlockListElementsComponent } from './../../../components/block-list-elements/block-list-elements.component'
 
 @Component({
   selector: 'app-users-list',
@@ -11,12 +9,13 @@ import { Input } from '@angular/core';
 
 export class UsersListComponent implements OnInit {
 
-  @Input() userList: User[];
 
-  constructor() { }
+  constructor(public blockListElementsComponent :  BlockListElementsComponent) {
+    this.blockListElementsComponent
+  }
 
   ngOnInit() {
-    this.userList = MOCKUSERS;
+    console.log('Qué hemos liao?')
   }
 
 }

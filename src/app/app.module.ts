@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { PostsModule } from './modules/posts/posts.module';
 import { UserModule } from './modules/users/user.module';
+import { LoadingModule } from 'ngx-loading';
 
 /** Router **/
 import { app_routing } from './router';
@@ -15,6 +16,9 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { BlockListElementsComponent } from './components/block-list-elements/block-list-elements.component';
+import { PostListComponent } from './modules/posts/post-list/post-list.component';
+import { UsersListComponent } from './modules/users/users-list/users-list.component';
 
 
 
@@ -24,7 +28,10 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    NavBarComponent
+    NavBarComponent,
+    PostListComponent,
+    UsersListComponent,
+    BlockListElementsComponent
   ],
   imports: [
     PostsModule,
@@ -34,10 +41,12 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     HttpModule,
     HttpClientModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    LoadingModule
+  ],
+  providers: [
 
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

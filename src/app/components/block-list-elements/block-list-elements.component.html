@@ -1,0 +1,9 @@
+<div class="content-block-list">
+
+  Location {{location}}
+  <ul *ngFor="let data of arrayList">
+    <app-post-list class="content-block-list_item" [item]="data" [itemList]="arrayList"></app-post-list>
+  </ul>
+</div>
+
+
