@@ -1,63 +1,83 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../../../models/users/user';
 import { UsersService } from '../../../services/users/users.service';
-import { AppComponent} from './../../../app.component';
+import { AppComponent } from './../../../app.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-users-create-and-edit',
-  templateUrl: './users-create-and-edit.component.html',
-  styleUrls: ['./users-create-and-edit.component.scss']
+	selector: 'app-users-create-and-edit',
+	templateUrl: './users-create-and-edit.component.html',
+	styleUrls: ['./users-create-and-edit.component.scss']
 })
 export class UsersCreateAndEditComponent implements OnInit {
 
 	//Objeto usuario.
-	public user : User;
+	public user: User;
 
 	//Atributos que muestran u ocultan texto y/o botones.
-	private hiddenAdd :  boolean;
-	private hiddenUpdate : boolean;
-	private hiddenError : boolean;
+	private hiddenAdd: boolean;
+	private hiddenUpdate: boolean;
+	private hiddenError: boolean;
 
- 	
+
 	//Constructor de la clase.
-	constructor(public usersService: UsersService, public appComponent:AppComponent) { 
+	constructor(public usersService: UsersService, public appComponent: AppComponent, private route: ActivatedRoute) {
 
 	}
 
 	//Inicialización de atributos.
 	ngOnInit() {
 
-		this.hiddenAdd = true;
-		this.hiddenUpdate = false;
+		//Inicializamos el objeto usuario.
+		this.user = new User();
+
 		this.hiddenError = true;
 
-		//Inicializamos el objeto usuario.
-		this.user = new User();		
+		let changeView = this.route.routeConfig.path;
+
+		console.log('URL?¿?', changeView)
+
+		if (null !== changeView && "" !== changeView && changeView.indexOf('users/add') > 0) {
+			this.hiddenAdd = false;
+			this.hiddenUpdate = true;
+
+		} else if (null !== changeView && "" !== changeView && changeView.indexOf('users/update') > 0) {
+			this.hiddenUpdate = false;
+			this.hiddenAdd = true;
+
+			//TODO añadir el usuario seleccionado.
+
+			this.user.name = "up";
+			this.user.email = "da";
+			this.user.phone = "te";
+			this.user.username = "te";
+		}
+
 	}
 
 
 	//Función que crea un nuevo usuario.
-	private addUser(){
-		
+	private addUser() {
+
 		//mostramos el spinner
 		this.appComponent.isLoadingActive = true;
 
-		if(this.validateUser()){
+		if (this.validateUser()) {
 			console.log("El usuario es correcto.");
 
 			this.usersService.addUser(this.user).subscribe(
 				result => {
-				  this.user = result;		  
-				  console.log('Usuario creado correctamente');
-				  this.appComponent.isLoadingActive = false;
+					this.user = result;
+					console.log('Usuario creado correctamente');
+					this.appComponent.isLoadingActive = false;
 				},
 				error => {
-				  console.log('Error al crear el usuario.');
-				  this.appComponent.isLoadingActive = false;
+					console.log('Error al crear el usuario.');
+					this.appComponent.isLoadingActive = false;
 				}
-			  );
+			);
 
-		}else{
+		} else {
 			console.log("El usuario no es correcto.");
 			this.hiddenError = false;
 			this.appComponent.isLoadingActive = false;
@@ -66,27 +86,27 @@ export class UsersCreateAndEditComponent implements OnInit {
 
 
 	//Función que actualiza un nuevo usuario.
-	private updateUser(){
+	private updateUser() {
 
 		//mostramos el spinner
 		this.appComponent.isLoadingActive = true;
 
-		if(this.validateUser()){
+		if (this.validateUser()) {
 			console.log("El usuario es correcto.");
 
 			this.usersService.updateUser(this.user).subscribe(
 				result => {
-				  this.user = result;		  
-				  console.log('Usuario actualizado correctamente');
-				  this.appComponent.isLoadingActive = false;
+					this.user = result;
+					console.log('Usuario actualizado correctamente');
+					this.appComponent.isLoadingActive = false;
 				},
 				error => {
-				  console.log('Error al actualizar el usuario.');
-				  this.appComponent.isLoadingActive = false;
+					console.log('Error al actualizar el usuario.');
+					this.appComponent.isLoadingActive = false;
 				}
-			  );
+			);
 
-		}else{
+		} else {
 			console.log("El usuario no es correcto.");
 			this.hiddenError = false;
 			this.appComponent.isLoadingActive = false;
@@ -95,16 +115,16 @@ export class UsersCreateAndEditComponent implements OnInit {
 
 
 	//Validamos que todos los datos del usuario esten rellenos.
-	private validateUser(){
+	private validateUser() {
 
-		let validUser : boolean = true;
+		let validUser: boolean = true;
 
-		if(null===this.user || null==this.user.name || null===this.user.username || null==this.user.email 
-			|| null==this.user.phone || ""===this.user.name || ""===this.user.username || 
-			""===this.user.email || ""===this.user.phone){
-				console.log("Usuario no válido.");
-				validUser = false;
-			}
+		if (null === this.user || null == this.user.name || null === this.user.username || null == this.user.email
+			|| null == this.user.phone || "" === this.user.name || "" === this.user.username ||
+			"" === this.user.email || "" === this.user.phone) {
+			console.log("Usuario no válido.");
+			validUser = false;
+		}
 
 		return validUser;
 	}

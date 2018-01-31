@@ -6,7 +6,8 @@ import { UsersCreateAndEditComponent } from './modules/users/users-create-and-ed
 
 const router : Routes = <Routes>[
   {path: 'blockListComponent/:name', component: BlockListElementsComponent},
-   {path: 'blockListComponent/users/add', component: UsersCreateAndEditComponent},
+  {path: 'blockListComponent/users/add', component: UsersCreateAndEditComponent},
+  {path: 'blockListComponent/users/update', component: UsersCreateAndEditComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'blockListComponent/posts'}
 ];
 
