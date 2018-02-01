@@ -3,6 +3,7 @@ import { User } from '../../../models/users/user';
 import { UsersService } from '../../../services/users/users.service';
 import { AppComponent } from './../../../app.component';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-users-create-and-edit',
@@ -21,7 +22,7 @@ export class UsersCreateAndEditComponent implements OnInit {
 
 
 	//Constructor de la clase.
-	constructor(public usersService: UsersService, public appComponent: AppComponent, private route: ActivatedRoute) {
+	constructor(public router : Router, public usersService: UsersService, public appComponent: AppComponent, private route: ActivatedRoute) {
 
 	}
 
@@ -105,6 +106,16 @@ export class UsersCreateAndEditComponent implements OnInit {
 			this.appComponent.isLoadingActive = false;
 		}
 	}
+
+
+	private volverListado(){
+		this.router.navigateByUrl(`blockListComponent/users`);
+	}
+
+
+
+
+
 
 
 	//Validamos que todos los datos del usuario esten rellenos.
