@@ -24,6 +24,8 @@ export class BlockListElementsComponent implements OnInit {
         this.getAllPost();
       }else if(params.name ==='users'){
         this.getAllUsers()
+      }else if(params.name ==='commentsForPost'){
+        this.getAllCommentsForPost()
       }
     });
 
@@ -49,4 +51,7 @@ export class BlockListElementsComponent implements OnInit {
     alert('LLamada al End-point que devuelve todos los usuarios')
   }
 
+  public getAllCommentsForUser(){
+    console.log('Obtenemos los Comentarios de los Usuarios');
+  }
 }
