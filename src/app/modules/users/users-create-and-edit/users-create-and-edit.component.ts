@@ -29,9 +29,6 @@ export class UsersCreateAndEditComponent implements OnInit {
 	//Inicialización de atributos.
 	ngOnInit() {
 
-		//Inicializamos el objeto usuario.
-		this.user = new User();
-
 		this.hiddenError = true;
 
 		let changeView = this.route.routeConfig.path;
@@ -41,10 +38,14 @@ export class UsersCreateAndEditComponent implements OnInit {
 		if (null !== changeView && "" !== changeView && changeView.indexOf('users/add') > 0) {
 			this.hiddenAdd = false;
 			this.hiddenUpdate = true;
+			//Inicializamos el objeto usuario.
+			this.user = new User();
 
 		} else if (null !== changeView && "" !== changeView && changeView.indexOf('users/update') > 0) {
 			this.hiddenUpdate = false;
 			this.hiddenAdd = true;
+			//Inicializamos el objeto usuario. Cuando enlacemos con la vista del listado no haria falta.
+			this.user = new User();
 		}
 
 	}
@@ -64,10 +65,12 @@ export class UsersCreateAndEditComponent implements OnInit {
 					this.user = result;
 					console.log('Usuario creado correctamente');
 					this.appComponent.isLoadingActive = false;
+					this.router.navigateByUrl(`blockListComponent/users`);
 				},
 				error => {
 					console.log('Error al crear el usuario.');
 					this.appComponent.isLoadingActive = false;
+					this.router.navigateByUrl(`blockListComponent/users`);
 				}
 			);
 
@@ -93,10 +96,12 @@ export class UsersCreateAndEditComponent implements OnInit {
 					this.user = result;
 					console.log('Usuario actualizado correctamente');
 					this.appComponent.isLoadingActive = false;
+					this.router.navigateByUrl(`blockListComponent/users`);
 				},
 				error => {
 					console.log('Error al actualizar el usuario.');
 					this.appComponent.isLoadingActive = false;
+					this.router.navigateByUrl(`blockListComponent/users`);
 				}
 			);
 
@@ -107,7 +112,7 @@ export class UsersCreateAndEditComponent implements OnInit {
 		}
 	}
 
-
+	//El botón volver, regresa al listado.
 	private volverListado(){
 		this.router.navigateByUrl(`blockListComponent/users`);
 	}
