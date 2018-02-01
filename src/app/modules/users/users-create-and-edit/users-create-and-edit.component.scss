@@ -1,0 +1,62 @@
+
+.show-modal-edit-user{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.show-modal-edit-user_all-content{
+  
+   flex-direction: column;
+   width: 500px;
+
+}
+
+.show-modal-edit-user_modal{
+    display: flex;
+    justify-content: center;
+    padding:4% 0;
+}
+
+.show-modal-edit-user_modal_header{
+   
+    font-size: 2em;
+    font-weight: bold;
+}
+
+
+.show-modal-edit-user_content{
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+}
+
+.show-modal-edit-user_title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.show-modal-edit-user_title-label{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.show-modal-edit-user_title-input{
+
+}
+
+.show-modal_error{
+    color:red;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.show-modal-edit-user_content-buttons{
+    display: flex;
+    justify-content: center;
+    padding: 4% 0;    
+}
+
+.show-modal-edit-user_content-button-edit{
+    margin-right:20%;
+}

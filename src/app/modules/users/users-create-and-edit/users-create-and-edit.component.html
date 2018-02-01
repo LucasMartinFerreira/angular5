@@ -1,34 +1,64 @@
 <div class="show-modal-edit-user">
   <div class="show-modal-edit-user_all-content">
 
-    <div class="show-modal-edit-user_modal_header" [hidden]="hiddenAdd">
-    	 AÑADIR USUARIO
-    </div>
+    <div class="show-modal-edit-user_modal">
+        <div class="show-modal-edit-user_modal_header" [hidden]="hiddenAdd">
+            AÑADIR USUARIO
+         </div>
+     
+          <div class="show-modal-edit-user_modal_header" [hidden]="hiddenUpdate">
+            ACTUALIZAR USUARIO
+         </div>
 
-   	<div class="show-modal-edit-user_modal_header" [hidden]="hiddenUpdate">
-    	 ACTUALIZAR USUARIO
     </div>
+    
 
     <div class="show-modal-edit-user_content">
       
       <div class="show-modal-edit-user_title">
-        <label>Nombre:</label>
-        <input type="text" [(ngModel)]="user.name" >        
+        
+        <div class="show-modal-edit-user_title-label">
+            <label >Nombre:</label>
+        </div>
+
+        <div>
+          <input type="text" [(ngModel)]="user.name" > 
+        </div>        
+               
       </div>
 
       <div class="show-modal-edit-user_title">
-        <label>Nombre de usuario:</label>
-        <input [(ngModel)]="user.username">
+        
+        <div class="show-modal-edit-user_title-label">
+          <label>Nombre de usuario:</label>
+        </div>
+
+        <div class="show-modal-edit-user_title-input">
+          <input [(ngModel)]="user.username">
+        </div>
+        
       </div>
 
       <div class="show-modal-edit-user_title">
-        <label>Email:</label>
-        <input [(ngModel)]="user.email">
+
+        <div class="show-modal-edit-user_title-label">
+          <label>Email:</label>
+        </div>
+        <div class="show-modal-edit-user_title-input">
+          <input [(ngModel)]="user.email">
+        </div>
+
       </div>
 
       <div class="show-modal-edit-user_title">
-        <label>Phone:</label>
-        <input [(ngModel)]="user.phone">
+
+        <div class="show-modal-edit-user_title-label">
+          <label>Phone:</label>
+        </div>
+        <div class="show-modal-edit-user_title-input">
+          <input [(ngModel)]="user.phone">
+        </div>
+
       </div>
 
 
@@ -50,7 +80,7 @@
 
         </div>
 
-        <div class="show-modal-edit-user_content-button-close" [hidden]="true">
+        <div class="show-modal-edit-user_content-button-close">
 
           <button  ng-click="UserController.closeModal()" type="button" class="btn btn-primary">Cerrar</button>
 

@@ -44,13 +44,6 @@ export class UsersCreateAndEditComponent implements OnInit {
 		} else if (null !== changeView && "" !== changeView && changeView.indexOf('users/update') > 0) {
 			this.hiddenUpdate = false;
 			this.hiddenAdd = true;
-
-			//TODO añadir el usuario seleccionado.
-
-			this.user.name = "up";
-			this.user.email = "da";
-			this.user.phone = "te";
-			this.user.username = "te";
 		}
 
 	}
