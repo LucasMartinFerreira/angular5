@@ -25,4 +25,19 @@ export class UsersListComponent implements OnInit {
     this.existsUserData = this.itemList != undefined;
   }
 
+  private editUser(user:User){
+    console.log("Editando el usuario "+ user.id)
+  }
+
+  private deleteUser(user:User){
+    console.log("Editando el usuario "+ user.id)
+    const index: number = this.itemList.indexOf(this.objectItem);
+    if (index !== -1) {
+      this.itemList.splice(index, 1);
+    }
+  }
+
+  private addUser(){
+    console.log("Añadiendo usuario ")
+  }
 }
