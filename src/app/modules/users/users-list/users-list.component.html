@@ -1,6 +1,19 @@
-<h1>LISTADO DE USUARIOS</h1>
-<ul>
-    <li>
-        {{objectItem.name}} -- {{objectItem.username}} -- {{objectItem.email}} -- {{objectItem.phone}}
-    </li>
-</ul>
+
+<div>
+    <div>
+            <li>
+            Nombre: {{objectItem.name}}
+            </li>
+            <li>
+            Username: {{objectItem.username}}
+            </li>
+            <li>
+            Email: {{objectItem.email}}
+            </li>
+            <li>
+            Teléfono: {{objectItem.phone}}
+            </li>
+    </div>
+    <button type="button" class="btn btn-primary btn-md" (click)="editPost(post)">Editar</button>
+    <button type="button" class="btn btn-primary btn-md" (click)="deletePost()">Eliminar</button>
+</div>

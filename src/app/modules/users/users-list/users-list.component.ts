@@ -14,12 +14,15 @@ export class UsersListComponent implements OnInit {
   @Input('item') objectItem : User[];
   @Input('itemList') itemList : any;
 
+  existsUserData: boolean;
+
   constructor(public blockListElementsComponent :  BlockListElementsComponent) {
     this.blockListElementsComponent
   }
 
   ngOnInit() {
-    console.log('Qué hemos liao?')
+    console.log('User list component onInit')
+    this.existsUserData = this.itemList != undefined;
   }
 
 }

@@ -11,7 +11,8 @@ import { UsersService } from '../../services/users/users.service';
   styleUrls: ['./block-list-elements.component.scss']
 })
 export class BlockListElementsComponent implements OnInit {
-
+  public existsUserData: boolean = false;
+  
   private arrayList = [];
   constructor(public appComponent : AppComponent, public postService: PostService, public usersService: UsersService, private route: ActivatedRoute) {
     this.appComponent.isLoadingActive = true;
@@ -21,6 +22,7 @@ export class BlockListElementsComponent implements OnInit {
   ngOnInit() {
     let changeView = this.route.params.subscribe(params => {
       console.log('URL?¿?', params)
+      this.existsUserData = false;
       if(params.name === 'posts'){
         this.getAllPost();
       }else if(params.name ==='users'){
@@ -35,7 +37,6 @@ export class BlockListElementsComponent implements OnInit {
     this.postService.postList().subscribe(
       result => {
         this.arrayList = result;
-
         console.log('Resultado',  this.arrayList)
         this.appComponent.isLoadingActive = false;
       },
@@ -51,6 +52,7 @@ export class BlockListElementsComponent implements OnInit {
       result => {
         this.arrayList = result;
 
+        this.existsUserData = true;
         console.log('Resultado',  this.arrayList)
         this.appComponent.isLoadingActive = false;
       },
