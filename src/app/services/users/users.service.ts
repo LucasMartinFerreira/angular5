@@ -26,9 +26,9 @@ export class UsersService {
     return this.httpClient.patch(url, user, { headers: HeadersApp.getGeneralHeader()});;
   }
 
-    //Función que crea un usuario.
-    public deleteUser(user:User): Observable <any>{
-      return this.httpClient.delete(Constants.HOME_DEV + '/users/' + user.id, { headers: HeadersApp.getGeneralHeader()});;
-    }
+  //Función que elimina un usuario.
+  public deleteUser(user:User): Observable <any>{
+    return this.httpClient.delete(Constants.HOME_DEV + '/users/' + user.id, { headers: HeadersApp.getGeneralHeader()});;
+  }
 
 }
