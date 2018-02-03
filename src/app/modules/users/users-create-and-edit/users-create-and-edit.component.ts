@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 
 import { FormControl,FormGroup,FormBuilder, Validators } from '@angular/forms';
 
+
 @Component({
 	selector: 'app-users-create-and-edit',
 	templateUrl: './users-create-and-edit.component.html',
@@ -47,7 +48,7 @@ export class UsersCreateAndEditComponent implements OnInit {
 				id: [''],
 				name:  ['', Validators.required],
 				username:  ['', Validators.required],
-				email: ['', Validators.required],
+				email: ['', Validators.email],
 				phone: ['', Validators.required],
 			});
 
@@ -63,7 +64,7 @@ export class UsersCreateAndEditComponent implements OnInit {
 					id: [params["id"]],
 					name:  [params["name"], Validators.required],
 					username:  [params["username"], Validators.required],
-					email: [params["email"], Validators.required],
+					email: [params["email"],Validators.email],
 					phone: [params["phone"], Validators.required],
 				});
 			});
