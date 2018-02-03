@@ -6,4 +6,15 @@ export class User {
     email: string;
     phone: string;
 
+    user : any;
+    editUser: boolean;
+    addUser :  boolean;
+
+    public setUser(userData){
+        this.user = userData;
+    };
+
+    public getUser(){
+        return this.user;
+    };
 }

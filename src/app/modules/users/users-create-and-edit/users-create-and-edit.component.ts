@@ -28,7 +28,8 @@ export class UsersCreateAndEditComponent implements OnInit {
 
 	//Constructor del componente
 	constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router : Router, 
-		private usersService: UsersService, private appComponent:AppComponent){
+		private usersService: UsersService, private appComponent:AppComponent, 
+		public userModel : User){
 
 	}
 
@@ -56,8 +57,18 @@ export class UsersCreateAndEditComponent implements OnInit {
 			this.hiddenUpdate = false;
 			this.hiddenAdd = true;
 
+			let userData = this.userModel.getUser();
+
+			this.userForm = this.formBuilder.group({
+				id: [userData.id],
+				name:  [userData.name, Validators.required],
+				username:  [userData.username, Validators.required],
+				email: [userData.email,Validators.email],
+				phone: [userData.phone, Validators.required],
+			});
+
 			//Inicializamos el objeto usuario.
-			this.route.queryParams.subscribe(params => {
+			/*this.route.queryParams.subscribe(params => {
 
 				//datos del formulario.
 				this.userForm = this.formBuilder.group({
@@ -67,7 +78,7 @@ export class UsersCreateAndEditComponent implements OnInit {
 					email: [params["email"],Validators.email],
 					phone: [params["phone"], Validators.required],
 				});
-			});
+			});*/
 		}
 	}
 
@@ -84,7 +95,9 @@ export class UsersCreateAndEditComponent implements OnInit {
 
 		this.usersService.addUser(user).subscribe(
 			result => {
-				user = result;
+				this.userModel.setUser(result);
+				this.userModel.addUser = true;
+
 				console.log('Usuario creado correctamente');
 				this.appComponent.isLoadingActive = false;
 				this.router.navigateByUrl(`blockListComponent/users`);
@@ -112,7 +125,9 @@ export class UsersCreateAndEditComponent implements OnInit {
 
 		this.usersService.updateUser(user).subscribe(
 			result => {
-				user = result;
+				this.userModel.setUser(result);
+				this.userModel.editUser = true;
+
 				console.log('Usuario actualizado correctamente');
 				this.appComponent.isLoadingActive = false;
 				this.router.navigateByUrl(`blockListComponent/users`);

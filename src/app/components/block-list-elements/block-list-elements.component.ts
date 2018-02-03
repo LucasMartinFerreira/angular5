@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UsersService } from '../../services/users/users.service';
 import { PostListComponent } from "../../modules/posts/post-list/post-list.component";
 import { PostModel } from "../../models/posts/post.model"
-
+import { User } from "../../models/users/user"
 
 @Component({
   selector: 'app-block-list-elements',
@@ -24,7 +24,7 @@ export class BlockListElementsComponent implements OnInit {
   constructor(public appComponent : AppComponent, public usersService:UsersService,
               public postService: PostService,
               private route: ActivatedRoute,
-              public postModel : PostModel) {
+              public postModel : PostModel, public userModel : User) {
     this.appComponent.isLoadingActive = true;
 
   }
@@ -69,12 +69,35 @@ export class BlockListElementsComponent implements OnInit {
       result => {
         this.arrayList = result;
         this.existsUserData = true;
+
+        let userFromModel = this.userModel.getUser();
+
+        if(undefined!==userFromModel){
+      
+          if(this.userModel.addUser){
+            this.userModel.addUser = false;
+            this.arrayList.push(userFromModel);
+          }
+
+          if(this.userModel.editUser){
+            this.userModel.editUser = false;
+
+            //TODO 
+            //flag para saber si es editado o actualizado.
+
+          }
+    
+          this.userModel.setUser(null);
+      
+        };
+
         console.log('Resultado',  this.arrayList)
         this.appComponent.isLoadingActive = false;
       },
       error => {
         console.log('Error al obtener todos los usuarios');
       });
+
     }
 
   public getAllCommentsForPost(){

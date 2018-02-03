@@ -25,6 +25,7 @@ import { PostCommentsComponent } from './modules/posts/post-comments/post-commen
 /**Servicios **/
 
 import { PostModel } from './models/posts/post.model'
+import { User } from './models/users/user'
 
 
 
@@ -52,7 +53,8 @@ import { PostModel } from './models/posts/post.model'
     LoadingModule
   ],
   providers: [
-    PostModel
+    PostModel,
+    User
   ],
   bootstrap: [AppComponent]
 })

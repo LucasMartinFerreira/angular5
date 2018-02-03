@@ -18,18 +18,23 @@ export class UsersListComponent implements OnInit {
   @Input('itemList') itemList : any;
 
   existsUserData: boolean;
-  constructor(public blockListElementsComponent :  BlockListElementsComponent, public usersService: UsersService, private router:Router) {
+  constructor(public blockListElementsComponent :  BlockListElementsComponent, 
+    public usersService: UsersService, private router:Router,public  userModel : User) {
     this.blockListElementsComponent
   }
 
   ngOnInit() {
     console.log('User list component onInit')
+
     this.existsUserData = this.itemList != undefined;
   }
 
   private editUser(user:User){
-    console.log("Editando el usuario "+ user.id)
-    let navigationExtras: NavigationExtras = {
+    console.log("Editando el usuario "+ user.id);
+
+    this.userModel.setUser(user);
+
+    /*let navigationExtras: NavigationExtras = {
       queryParams: {
           "id": user.id,
           "email": user.email,
@@ -37,8 +42,8 @@ export class UsersListComponent implements OnInit {
           "phone": user.phone,
           "username": user.username,
       }
-    };
-    this.router.navigate(['blockListComponent/users/update'], navigationExtras);
+    };*/
+    this.router.navigate(['blockListComponent/users/update']);
   }
 
   private deleteUser(user:User){
