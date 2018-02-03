@@ -8,7 +8,7 @@ import { PostCreateAndEditComponent } from './post-create-and-edit/post-create-a
 /**Services**/
 
 import { PostService } from './../../services/posts/post.service';
-import { PostCommentsComponent } from './post-comments/post-comments.component'
+
 
 
 @NgModule({
@@ -16,8 +16,7 @@ import { PostCommentsComponent } from './post-comments/post-comments.component'
     CommonModule
   ],
   declarations: [
-    PostCreateAndEditComponent,
-    PostCommentsComponent
+    PostCreateAndEditComponent
   ],
   providers :[
     PostService

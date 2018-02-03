@@ -19,22 +19,23 @@ export class PostListComponent implements OnInit {
 
   private posts = [];
 
-
   @Input('item') objectItem : PostModel;
   @Input('itemList') itemList : any;
 
-  constructor(public postService: PostService, public router: Router, public appComponent : AppComponent, private toastr: ToastrService) {
+  constructor(public postService: PostService,
+              public router: Router,
+              public appComponent : AppComponent,
+              private toastr: ToastrService,
+              public  postModel : PostModel) {
 
   };
 
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
 
   private editPost (){
-    console.log('Editar Item:',  this.objectItem);
+    this.postModel.setPost(this.objectItem);
+    this.router.navigate(['/createEditPost', 'edit', this.objectItem.id]);
   }
-
 
   /**
    * Eliminación de un post
@@ -59,7 +60,8 @@ export class PostListComponent implements OnInit {
 
   private viewCommentPost(){
     let idPost = this.objectItem.id ;
-    this.router.navigate(['/commentsForPost', idPost]);
+    this.postModel.setIdPost(idPost);
+    this.router.navigate(['/blockListComponent', 'commentsForPost']);
   }
 
 }

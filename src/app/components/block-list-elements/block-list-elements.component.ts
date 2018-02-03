@@ -2,7 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { PostService} from "../../services/posts/post.service";
 import { AppComponent} from './../../app.component';
 import { ActivatedRoute } from '@angular/router';
-import {PostListComponent} from "../../modules/posts/post-list/post-list.component";
+import { PostListComponent } from "../../modules/posts/post-list/post-list.component";
+import { PostModel } from "../../models/posts/post.model"
 
 @Component({
   selector: 'app-block-list-elements',
@@ -12,20 +13,30 @@ import {PostListComponent} from "../../modules/posts/post-list/post-list.compone
 export class BlockListElementsComponent implements OnInit {
 
   private arrayList = [];
-  constructor(public appComponent : AppComponent, public postService: PostService, private route: ActivatedRoute) {
+  private idPost : number;
+
+  flagView : string  = '';
+
+  constructor(public appComponent : AppComponent,
+              public postService: PostService,
+              private route: ActivatedRoute,
+              public postModel : PostModel) {
     this.appComponent.isLoadingActive = true;
 
   }
 
   ngOnInit() {
     let changeView = this.route.params.subscribe(params => {
-      console.log('URL?¿?', params)
       if(params.name === 'posts'){
         this.getAllPost();
+        this.flagView = 'posts'
       }else if(params.name ==='users'){
         this.getAllUsers()
+        this.flagView = 'users'
       }else if(params.name ==='commentsForPost'){
+        this.idPost = this.postModel.getPostId();
         this.getAllCommentsForPost()
+        this.flagView = 'commentsForUser'
       }
     });
 
@@ -36,8 +47,6 @@ export class BlockListElementsComponent implements OnInit {
     this.postService.postList().subscribe(
       result => {
         this.arrayList = result;
-
-        console.log('Resultado',  this.arrayList)
         this.appComponent.isLoadingActive = false;
       },
       error => {
@@ -51,7 +60,14 @@ export class BlockListElementsComponent implements OnInit {
     alert('LLamada al End-point que devuelve todos los usuarios')
   }
 
-  public getAllCommentsForUser(){
-    console.log('Obtenemos los Comentarios de los Usuarios');
+
+  public getAllCommentsForPost(){
+    this.appComponent.isLoadingActive = true;
+    this.postService.postComments(this.idPost).subscribe(
+      result =>{
+        this.arrayList = result;
+        this.appComponent.isLoadingActive = false;
+      }
+    )
   }
 }
