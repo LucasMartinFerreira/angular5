@@ -24,14 +24,7 @@ export class UsersCreateAndEditComponent implements OnInit {
 	//Constructor de la clase.
 	constructor(public router : Router, public usersService: UsersService, public appComponent: AppComponent, private route: ActivatedRoute) {
 
-		this.user = new User
-		this.route.queryParams.subscribe(params => {
-            this.user.id = params["id"];
-			this.user.email = params["email"];
-			this.user.name = params["name"];
-			this.user.username = params["username"];
-			this.user.phone = params["phone"];
-		});
+		
 		
 	}
 
@@ -53,8 +46,15 @@ export class UsersCreateAndEditComponent implements OnInit {
 		} else if (null !== changeView && "" !== changeView && changeView.indexOf('users/update') > 0) {
 			this.hiddenUpdate = false;
 			this.hiddenAdd = true;
-			//Inicializamos el objeto usuario. Cuando enlacemos con la vista del listado no haria falta.
+			//Inicializamos el objeto usuario.
 			this.user = new User();
+			this.route.queryParams.subscribe(params => {
+				this.user.id = params["id"];
+				this.user.email = params["email"];
+				this.user.name = params["name"];
+				this.user.username = params["username"];
+				this.user.phone = params["phone"];
+			});
 		}
 
 	}
