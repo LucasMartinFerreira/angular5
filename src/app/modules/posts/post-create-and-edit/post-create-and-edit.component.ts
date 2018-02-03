@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PostModel } from "../../../models/posts/post.model"
+import { PostModel } from "../../../models/posts/post.model";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-post-create-and-edit',
@@ -8,21 +9,30 @@ import { PostModel } from "../../../models/posts/post.model"
 })
 export class PostCreateAndEditComponent implements OnInit {
 
+  objectPost : PostModel ;
+  idPost : number;
+  titlePost : string;
+  bodyPost : string
+  userId : number
 
-  @Input('post') post : PostModel[];
-  @Input('postList') postList : any
-  constructor() { }
+  constructor(public router : ActivatedRoute, public postModel : PostModel) { }
 
   ngOnInit() {
-    console.log('Pintamos:', this.post)
-    console.log('Todos', this.postList)
-  }
+    let changeView = this.router.params.subscribe(params => {
+      console.log("Paramentros", params)
+    });
 
-  private editPost (){
-    const index: number = this.postList.indexOf(this.post);
-    if (index !== -1) {
-      this.postList.splice(index, 1);
-    }
+    this.objectPost = this.postModel.getPost();
+
+    console.log('Obtenemos el post', this.objectPost)
+
+    this.idPost = this.objectPost.id;
+    this.userId = this.objectPost.userId;
+    this.titlePost = this.objectPost.title;
+    this.bodyPost = this.objectPost.body;
+
+
+
   }
 
 }

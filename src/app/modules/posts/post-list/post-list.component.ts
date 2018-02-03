@@ -3,7 +3,8 @@ import { AppComponent} from './../../../app.component';
 import { PostModel } from "../../../models/posts/post.model"
 import { BlockListElementsComponent } from "./../../../components/block-list-elements/block-list-elements.component"
 import { PostService} from "../../../services/posts/post.service";
-
+//import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,23 +18,27 @@ export class PostListComponent implements OnInit {
 
   private posts = [];
 
-
-  @Input('item') objectItem : PostModel[];
+  @Input('item') objectItem : PostModel;
   @Input('itemList') itemList : any;
 
-  constructor(public postService: PostService) {
+  constructor(public postService: PostService,
+              public router: Router,
+              public appComponent : AppComponent,
+             // private toastr: ToastrService,
+              public  postModel : PostModel) {
 
   };
 
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
 
   private editPost (){
-    console.log('Editar Item:',  this.objectItem);
+    this.postModel.setPost(this.objectItem);
+    this.router.navigate(['/createEditPost', 'edit', this.objectItem.id]);
   }
 
-
+  /**
+   * Eliminación de un post
+   */
   private deletePost (){
     console.log('Borrar Item:', this.objectItem)
     const index: number = this.itemList.indexOf(this.objectItem);
@@ -42,5 +47,11 @@ export class PostListComponent implements OnInit {
     }
   };
 
+
+  private viewCommentPost(){
+    let idPost = this.objectItem.id ;
+    this.postModel.setIdPost(idPost);
+    this.router.navigate(['/blockListComponent', 'commentsForPost']);
+  }
 
 }

@@ -15,4 +15,7 @@ export class PostService {
     return this.httpClient.get(Constants.HOME_DEV +'/posts', { headers: HeadersApp.getGeneralHeader()})
   }
 
+  public postComments(id){
+    return null;
+  }
 }
