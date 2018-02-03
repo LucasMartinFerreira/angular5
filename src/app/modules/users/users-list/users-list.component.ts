@@ -4,7 +4,6 @@ import { User } from '../../../models/users/user';
 import { Input } from '@angular/core';
 import { UsersService } from '../../../services/users/users.service';
 import { Router } from '@angular/router';
-import { NavigationExtras } from '@angular/router/src/router';
 
 @Component({
   selector: 'app-users-list',
@@ -33,16 +32,6 @@ export class UsersListComponent implements OnInit {
     console.log("Editando el usuario "+ user.id);
 
     this.userModel.setUser(user);
-
-    /*let navigationExtras: NavigationExtras = {
-      queryParams: {
-          "id": user.id,
-          "email": user.email,
-          "name": user.name,
-          "phone": user.phone,
-          "username": user.username,
-      }
-    };*/
     this.router.navigate(['blockListComponent/users/update']);
   }
 
