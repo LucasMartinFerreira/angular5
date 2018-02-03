@@ -12,7 +12,8 @@ import { UsersService } from '../../services/users/users.service';
   imports: [
     CommonModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     UsersCreateAndEditComponent

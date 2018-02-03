@@ -3,6 +3,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    
 }
 
 .show-modal-edit-user_all-content{
@@ -15,12 +16,12 @@
 .show-modal-edit-user_modal{
     display: flex;
     justify-content: center;
-    padding:4% 0;
+    padding:1% 0;
 }
 
 .show-modal-edit-user_modal_header{
    
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: bold;
 }
 
@@ -38,15 +39,16 @@
 }
 
 .show-modal-edit-user_title-label{
-    font-size: 1.5em;
+    font-size: 1em;
     font-weight: bold;
 }
 
 .show-modal-edit-user_title-input{
     border-radius: 5px;
     padding: 2px 10px;
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: bold;
+    border-color:grey;
 }
 
 .show-modal_error{
@@ -58,7 +60,7 @@
 .show-modal-edit-user_content-buttons{
     display: flex;
     justify-content: center;
-    padding: 4% 0;    
+    padding: 2% 0;    
 }
 
 .show-modal-edit-user_content-button-edit{

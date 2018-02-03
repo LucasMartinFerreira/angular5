@@ -1,95 +1,83 @@
 <div class="show-modal-edit-user">
+
   <div class="show-modal-edit-user_all-content">
 
     <div class="show-modal-edit-user_modal">
-        <div class="show-modal-edit-user_modal_header" [hidden]="hiddenAdd">
-            AÑADIR USUARIO
-         </div>
-     
-          <div class="show-modal-edit-user_modal_header" [hidden]="hiddenUpdate">
-            ACTUALIZAR USUARIO
-         </div>
+      <div class="show-modal-edit-user_modal_header" [hidden]="hiddenAdd">
+        AÑADIR USUARIO
+      </div>
 
+      <div class="show-modal-edit-user_modal_header" [hidden]="hiddenUpdate">
+        ACTUALIZAR USUARIO
+      </div>
     </div>
-    
 
-    <div class="show-modal-edit-user_content">
-      
+    <form [formGroup]="userForm">
+
       <div class="show-modal-edit-user_title">
-        
         <div class="show-modal-edit-user_title-label">
-            <label >Nombre:</label>
+          <label>Nombre:</label>
         </div>
-
         <div>
-          <input type="text" [(ngModel)]="user.name" autofocus class="show-modal-edit-user_title-input"> 
-        </div>        
-               
+          <input type="text" autofocus class="show-modal-edit-user_title-input" formControlName="name"
+          [ngStyle]="{'border-color':userForm.controls.name.errors!==null ? 'red' : 'grey' }">
+        </div>      
       </div>
 
       <div class="show-modal-edit-user_title">
-        
         <div class="show-modal-edit-user_title-label">
           <label>Nombre de usuario:</label>
         </div>
-
-        <div >
-          <input [(ngModel)]="user.username" class="show-modal-edit-user_title-input">
+        <div>
+          <input type="text" class="show-modal-edit-user_title-input" formControlName="username"
+          [ngStyle]="{'border-color':userForm.controls.username.errors!==null ? 'red' : 'grey' }">         
         </div>
-        
+
       </div>
 
       <div class="show-modal-edit-user_title">
-
         <div class="show-modal-edit-user_title-label">
           <label>Email:</label>
         </div>
-        <div >
-          <input [(ngModel)]="user.email" class="show-modal-edit-user_title-input">
+        <div>
+          <input type="text" class="show-modal-edit-user_title-input" formControlName="email"
+          [ngStyle]="{'border-color':userForm.controls.email.errors!==null ? 'red' : 'grey' }">          
         </div>
-
       </div>
+
 
       <div class="show-modal-edit-user_title">
 
         <div class="show-modal-edit-user_title-label">
-          <label>Phone:</label>
+          <label>Teléfono:</label>
         </div>
-        <div >
-          <input [(ngModel)]="user.phone" class="show-modal-edit-user_title-input">
+        <div>
+          <input type="text" class="show-modal-edit-user_title-input" formControlName="phone"
+          [ngStyle]="{'border-color':userForm.controls.phone.errors!==null ? 'red' : 'grey' }">          
         </div>
-
-      </div>
-
-
-      <div class="show-modal_error" ng-show="UserController.showRedMessage" [hidden]="hiddenError">
-        Todos los campos han de estar informados.          
       </div>
 
       <div class="show-modal-edit-user_content-buttons">
-        
+
         <div class="show-modal-edit-user_content-button-edit" [hidden]="hiddenAdd">
-          
-          <button   (click)="addUser()"  type="button" class="btn btn-primary">Añadir</button>
+
+          <button (click)="addUser()" [disabled]="!userForm.valid" type="button" class="btn btn-primary">Añadir</button>
 
         </div>
 
-        <div class="show-modal-edit-user_content-button-edit"  [hidden]="hiddenUpdate">
+        <div class="show-modal-edit-user_content-button-edit" [hidden]="hiddenUpdate">
 
-          <button  (click)="updateUser()"  type="button" class="btn btn-primary">Actualizar</button>
+          <button (click)="updateUser()" [disabled]="!userForm.valid" type="button" class="btn btn-primary">Actualizar</button>
 
         </div>
 
         <div class="show-modal-edit-user_content-button-close">
 
-          <button  (click)="volverListado()" type="button" class="btn btn-primary">Volver</button>
+          <button (click)="volverListado()" type="button" class="btn btn-primary">Volver</button>
 
         </div>
 
       </div>
-
-    </div>
-
+    </form>
   </div>
-
 </div>
