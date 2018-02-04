@@ -125,7 +125,7 @@ export class UsersCreateAndEditComponent implements OnInit {
 
 		this.usersService.updateUser(user).subscribe(
 			result => {
-				this.userModel.setUser(result);
+				this.userModel.setUser(user);
 				this.userModel.editUser = true;
 
 				console.log('Usuario actualizado correctamente');

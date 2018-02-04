@@ -26,6 +26,9 @@ export class UsersListComponent implements OnInit {
     console.log('User list component onInit')
 
     this.existsUserData = this.itemList != undefined;
+
+    if(this.userModel.getUser() != undefined)
+    console.log("USERMODEL " + this.userModel.getUser().id);
   }
 
   private editUser(user:User){

@@ -14,7 +14,7 @@ export class User {
         this.user = userData;
     };
 
-    public getUser(){
+    public getUser(): User{
         return this.user;
     };
 }

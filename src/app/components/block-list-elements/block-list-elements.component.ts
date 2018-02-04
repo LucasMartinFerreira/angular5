@@ -81,9 +81,16 @@ export class BlockListElementsComponent implements OnInit {
 
           if(this.userModel.editUser){
             this.userModel.editUser = false;
+            let modifiedUser = this.userModel.getUser();
 
-            //TODO 
-            //flag para saber si es editado o actualizado.
+            console.log("actualizando en la lista el usuario " + modifiedUser.id)
+
+            for(let i=0; i<this.arrayList.length; i++) {
+              let user = this.arrayList[i];
+              if(user.id == modifiedUser.id){
+                this.arrayList[i] = modifiedUser;
+              }
+            }
 
           }
     
