@@ -33,7 +33,6 @@ export class BlockListElementsComponent implements OnInit {
     let changeView = this.route.params.subscribe(params => {
 
       console.log('URL?¿?', params)
-      this.existsUserData = false;
 
       if(params.name === 'posts'){
         this.getAllPost();
@@ -68,7 +67,6 @@ export class BlockListElementsComponent implements OnInit {
     this.usersService.usersList().subscribe(
       result => {
         this.arrayList = result;
-        this.existsUserData = true;
 
         let userFromModel = this.userModel.getUser();
 

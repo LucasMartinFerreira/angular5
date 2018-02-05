@@ -2,7 +2,7 @@
 
   <ul *ngFor="let data of arrayList">
 
-  <app-users-list *ngIf="existsUserData" class="content-block-list_item" [item]="data" [itemList]="arrayList"></app-users-list>
+  <app-users-list *ngIf="flagView === 'users'" class="content-block-list_item" [item]="data" [itemList]="arrayList"></app-users-list>
 
   <div *ngIf="flagView === 'posts'">
 
