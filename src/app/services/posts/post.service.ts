@@ -6,6 +6,8 @@ import { HeadersApp } from './../../headers';
 import { Headers, RequestOptions } from '@angular/http';
 
 
+
+
 @Injectable()
 export class PostService {
 
@@ -13,6 +15,14 @@ export class PostService {
 
   public postList() : Observable <any> {
     return this.httpClient.get(Constants.HOME_DEV +'/posts', { headers: HeadersApp.getGeneralHeader()})
+  }
+
+  public postDelete (idPost): Observable <any> {
+    return this.httpClient.delete(Constants.HOME_DEV +'/posts/'+idPost, { headers: HeadersApp.getGeneralHeader()})
+  }
+
+  public postComments (idPost) :Observable <any>{
+    return this.httpClient.get(Constants.HOME_DEV +'/posts/'+idPost+'/comments', { headers: HeadersApp.getGeneralHeader()})
   }
 
 }

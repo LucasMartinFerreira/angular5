@@ -7,6 +7,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { PostsModule } from './modules/posts/posts.module';
 import { UserModule } from './modules/users/user.module';
 import { LoadingModule } from 'ngx-loading';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 /** Router **/
 import { app_routing } from './router';
@@ -19,6 +21,12 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { BlockListElementsComponent } from './components/block-list-elements/block-list-elements.component';
 import { PostListComponent } from './modules/posts/post-list/post-list.component';
 import { UsersListComponent } from './modules/users/users-list/users-list.component';
+import { PostCommentsComponent } from './modules/posts/post-comments/post-comments.component'
+
+
+/**Servicios **/
+
+import { PostModel } from './models/posts/post.model'
 
 
 
@@ -31,7 +39,8 @@ import { UsersListComponent } from './modules/users/users-list/users-list.compon
     NavBarComponent,
     PostListComponent,
     UsersListComponent,
-    BlockListElementsComponent
+    BlockListElementsComponent,
+    PostCommentsComponent
   ],
   imports: [
     PostsModule,
@@ -42,10 +51,16 @@ import { UsersListComponent } from './modules/users/users-list/users-list.compon
     HttpClientModule,
     CommonModule,
     FormsModule,
-    LoadingModule
+    LoadingModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 1500,
+      positionClass: 'toast-bottom-full-width',
+      preventDuplicates: true,
+    })
   ],
   providers: [
-
+    PostModel
   ],
   bootstrap: [AppComponent]
 })

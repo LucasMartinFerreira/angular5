@@ -7,7 +7,8 @@ import { PostCreateAndEditComponent } from './post-create-and-edit/post-create-a
 
 /**Services**/
 
-import { PostService } from './../../services/posts/post.service'
+import { PostService } from './../../services/posts/post.service';
+
 
 
 @NgModule({
