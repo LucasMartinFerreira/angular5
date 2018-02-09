@@ -1,11 +1,23 @@
 .post-create-and-edit{
   display: grid;
-  .post-create-and-edit__title, .post-create-and-edit__button-edit{
+  .post-create-and-edit__title{
     justify-content: center;
     width: 100%;
     display: flex;
 
     button{
+      margin-bottom: 30px;
+    }
+  }
+
+  .post-create-and-edit__button-edit{
+    justify-content: center;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    justify-items: center;
+    button{
+      width: 30%;
       margin-bottom: 30px;
     }
   }

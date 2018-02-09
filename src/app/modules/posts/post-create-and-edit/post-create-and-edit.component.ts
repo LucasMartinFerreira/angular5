@@ -58,4 +58,8 @@ export class PostCreateAndEditComponent implements OnInit {
         console.log('Error al borrar el post', this.objectPost);
       })
   }
+
+  private backList (){
+    this.router.navigate(['/blockListComponent', 'posts']);
+  }
 }
