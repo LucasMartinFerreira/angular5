@@ -14,7 +14,7 @@ import { User } from "../../models/users/user"
 })
 export class BlockListElementsComponent implements OnInit {
   public existsUserData: boolean = false;
-  
+
   private arrayList = [];
 
   private idPost : number;
@@ -32,6 +32,7 @@ export class BlockListElementsComponent implements OnInit {
   ngOnInit() {
     let changeView = this.route.params.subscribe(params => {
 
+      this.appComponent.isLoadingActive = true;
       console.log('URL?¿?', params)
 
       if(params.name === 'posts'){
@@ -71,7 +72,7 @@ export class BlockListElementsComponent implements OnInit {
         let userFromModel = this.userModel.getUser();
 
         if(undefined!==userFromModel){
-      
+
           if(this.userModel.addUser){
             this.userModel.addUser = false;
             this.arrayList.push(userFromModel);
@@ -91,9 +92,9 @@ export class BlockListElementsComponent implements OnInit {
             }
 
           }
-    
+
           this.userModel.setUser(null);
-      
+
         };
 
         console.log('Resultado',  this.arrayList)

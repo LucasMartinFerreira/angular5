@@ -42,9 +42,9 @@ export class PostCreateAndEditComponent implements OnInit {
 
     this.objectEditPost = new PostModel();
     this.objectEditPost.id= this.idPost;
-    this.objectEditPost.title = this.titlePost
-    this.objectEditPost.body = this.bodyPost
-    this.objectEditPost.userId = this.userId
+    this.objectEditPost.title = this.titlePost;
+    this.objectEditPost.body = this.bodyPost;
+    this.objectEditPost.userId = this.userId;
 
 
     this.postService.postEdit(this.objectEditPost).subscribe(
