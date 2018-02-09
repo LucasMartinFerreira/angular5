@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 
 /**Componentes**/
@@ -13,7 +14,8 @@ import { PostService } from './../../services/posts/post.service';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   declarations: [
     PostCreateAndEditComponent

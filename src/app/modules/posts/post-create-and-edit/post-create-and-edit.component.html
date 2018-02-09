@@ -1,6 +1,44 @@
-<h1>Editamos el Usuario</h1>
+<div class="post-create-and-edit">
+  <div class="post-create-and-edit__title">
+    <h1>Editamos el Usuario</h1>
+  </div>
+  <div class="post-create-and-edit__row">
+    <div class="post-create-and-edit__label">
+      Id Post:
+    </div>
+    <div class="post-create-and-edit__input">
+      <input readonly type="text" [(ngModel)]="idPost" >
+    </div>
+  </div>
+  <div class="post-create-and-edit__row">
+    <div class="post-create-and-edit__label">
+      Title:
+    </div>
+    <div class="post-create-and-edit__input">
+      <input type="text" [(ngModel)]="titlePost" >
+    </div>
+  </div>
+  <div class="post-create-and-edit__row">
+    <div class="post-create-and-edit__label">
+      Body:
+    </div>
+    <div class="post-create-and-edit__input">
+      <input type="text" [(ngModel)]="bodyPost" >
+    </div>
+  </div>
+  <div class="post-create-and-edit__row">
+    <div class="post-create-and-edit__label">
+      userId:
+    </div>
+    <div class="post-create-and-edit__input">
+      <input readonly type="text" [(ngModel)]="userId" >
+    </div>
+  </div>
 
-<h3>Id Post {{idPost}}</h3>
-<h3>Title {{titlePost}}</h3>
-<h3>Body: {{bodyPost}}</h3>
-<h3>userId: {{userId}}</h3>
+  <div class="post-create-and-edit__button-edit">
+    <button type="button" class="btn btn-primary btn-md" (click)="editPost()">Editar</button>
+  </div>
+</div>
+
+
+
