@@ -36,7 +36,7 @@ export class PostService {
       userId: post.userId
     };
 
-    return this.httpClient.patch(Constants.HOME_DEV +'/posts/'+post.id, {body: body, headers: HeadersApp.getGeneralHeader()})
+    return this.httpClient.patch(Constants.HOME_DEV +'/posts/'+post.id, body,{headers: HeadersApp.getGeneralHeader()})
   }
 
 }
