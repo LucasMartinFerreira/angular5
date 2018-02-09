@@ -1,4 +1,20 @@
-<div class="content-list-users">
-  <h1>LISTADO DE USUARIOS</h1>
-</div>
 
+<div>
+    <div>
+            <li>
+            Nombre: {{objectItem.name}}
+            </li>
+            <li>
+            Username: {{objectItem.username}}
+            </li>
+            <li>
+            Email: {{objectItem.email}}
+            </li>
+            <li>
+            Teléfono: {{objectItem.phone}}
+            </li>
+    </div>
+    <button type="button" class="btn btn-primary btn-md" (click)="editUser(objectItem)">Editar</button>
+    <button type="button" class="btn btn-primary btn-md" (click)="deleteUser(objectItem)">Eliminar</button>
+    <button type="button" class="btn btn-primary btn-md" (click)="addUser()">Añadir</button>
+</div>

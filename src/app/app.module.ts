@@ -7,8 +7,6 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { PostsModule } from './modules/posts/posts.module';
 import { UserModule } from './modules/users/user.module';
 import { LoadingModule } from 'ngx-loading';
-import { ToastrModule } from 'ngx-toastr';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 /** Router **/
 import { app_routing } from './router';
@@ -27,6 +25,7 @@ import { PostCommentsComponent } from './modules/posts/post-comments/post-commen
 /**Servicios **/
 
 import { PostModel } from './models/posts/post.model'
+import { User } from './models/users/user'
 
 
 
@@ -51,16 +50,11 @@ import { PostModel } from './models/posts/post.model'
     HttpClientModule,
     CommonModule,
     FormsModule,
-    LoadingModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot({
-      timeOut: 1500,
-      positionClass: 'toast-bottom-full-width',
-      preventDuplicates: true,
-    })
+    LoadingModule
   ],
   providers: [
-    PostModel
+    PostModel,
+    User
   ],
   bootstrap: [AppComponent]
 })

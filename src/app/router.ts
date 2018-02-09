@@ -4,10 +4,13 @@ import { UsersListComponent } from './modules/users/users-list/users-list.compon
 import { BlockListElementsComponent } from './components/block-list-elements/block-list-elements.component';
 import { PostCommentsComponent } from './modules/posts/post-comments/post-comments.component'
 import { PostCreateAndEditComponent } from './modules/posts/post-create-and-edit/post-create-and-edit.component'
+import { UsersCreateAndEditComponent } from './modules/users/users-create-and-edit/users-create-and-edit.component';
 
 const router : Routes = <Routes>[
   {path: 'blockListComponent/:name', component: BlockListElementsComponent},
   {path: 'createEditPost/:action/:idPost', component: PostCreateAndEditComponent},
+  {path: 'blockListComponent/users/add', component: UsersCreateAndEditComponent},
+  {path: 'blockListComponent/users/update', component: UsersCreateAndEditComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'blockListComponent/posts'}
 ];
 

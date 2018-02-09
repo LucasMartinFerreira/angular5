@@ -1,3 +1,83 @@
-<p>
-  users-create-and-edit works!
-</p>
+<div class="show-modal-edit-user">
+
+  <div class="show-modal-edit-user_all-content">
+
+    <div class="show-modal-edit-user_modal">
+      <div class="show-modal-edit-user_modal_header" [hidden]="hiddenAdd">
+        AÑADIR USUARIO
+      </div>
+
+      <div class="show-modal-edit-user_modal_header" [hidden]="hiddenUpdate">
+        ACTUALIZAR USUARIO
+      </div>
+    </div>
+
+    <form [formGroup]="userForm">
+
+      <div class="show-modal-edit-user_title">
+        <div class="show-modal-edit-user_title-label">
+          <label>Nombre:</label>
+        </div>
+        <div>
+          <input type="text" autofocus class="show-modal-edit-user_title-input" formControlName="name"
+          [ngStyle]="{'border-color':userForm.controls.name.errors!==null ? 'red' : 'grey' }">
+        </div>      
+      </div>
+
+      <div class="show-modal-edit-user_title">
+        <div class="show-modal-edit-user_title-label">
+          <label>Nombre de usuario:</label>
+        </div>
+        <div>
+          <input type="text" class="show-modal-edit-user_title-input" formControlName="username"
+          [ngStyle]="{'border-color':userForm.controls.username.errors!==null ? 'red' : 'grey' }">         
+        </div>
+
+      </div>
+
+      <div class="show-modal-edit-user_title">
+        <div class="show-modal-edit-user_title-label">
+          <label>Email:</label>
+        </div>
+        <div>
+          <input type="email" class="show-modal-edit-user_title-input" formControlName="email"
+          [ngStyle]="{'border-color':userForm.controls.email.errors!==null ? 'red' : 'grey' }">          
+        </div>
+      </div>
+
+
+      <div class="show-modal-edit-user_title">
+
+        <div class="show-modal-edit-user_title-label">
+          <label>Teléfono:</label>
+        </div>
+        <div>
+          <input type="text" class="show-modal-edit-user_title-input" formControlName="phone"
+          [ngStyle]="{'border-color':userForm.controls.phone.errors!==null ? 'red' : 'grey' }">          
+        </div>
+      </div>
+
+      <div class="show-modal-edit-user_content-buttons">
+
+        <div class="show-modal-edit-user_content-button-edit" [hidden]="hiddenAdd">
+
+          <button (click)="addUser()" [disabled]="!userForm.valid" type="button" class="btn btn-primary">Añadir</button>
+
+        </div>
+
+        <div class="show-modal-edit-user_content-button-edit" [hidden]="hiddenUpdate">
+
+          <button (click)="updateUser()" [disabled]="!userForm.valid" type="button" class="btn btn-primary">Actualizar</button>
+
+        </div>
+
+        <div class="show-modal-edit-user_content-button-close">
+
+          <button (click)="volverListado()" type="button" class="btn btn-primary">Volver</button>
+
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>

@@ -13,9 +13,4 @@ export class NavBarComponent implements OnInit {
   ngOnInit() {
   }
 
-  goUsers () {
-
-    this.router.navigateByUrl(`blockListComponent/users`);
-  }
-
 }

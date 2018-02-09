@@ -3,9 +3,8 @@ import { AppComponent} from './../../../app.component';
 import { PostModel } from "../../../models/posts/post.model"
 import { BlockListElementsComponent } from "./../../../components/block-list-elements/block-list-elements.component"
 import { PostService} from "../../../services/posts/post.service";
-import { ToastrService } from 'ngx-toastr';
+//import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-
 
 
 @Component({
@@ -25,7 +24,7 @@ export class PostListComponent implements OnInit {
   constructor(public postService: PostService,
               public router: Router,
               public appComponent : AppComponent,
-              private toastr: ToastrService,
+             // private toastr: ToastrService,
               public  postModel : PostModel) {
 
   };
@@ -41,19 +40,10 @@ export class PostListComponent implements OnInit {
    * Eliminación de un post
    */
   private deletePost (){
-    this.appComponent.isLoadingActive = true;
+    console.log('Borrar Item:', this.objectItem)
     const index: number = this.itemList.indexOf(this.objectItem);
     if (index !== -1) {
       this.itemList.splice(index, 1);
-      this.postService.postDelete(this.objectItem.id).subscribe(
-        result => {
-          this.appComponent.isLoadingActive = false;
-          console.log('Item Borrado', this.objectItem);
-          this.toastr.success('Post borrado correctamente');
-        },
-        error => {
-          console.log('Error al borrar el post', this.objectItem);
-        })
     }
   };
 
