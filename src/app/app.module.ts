@@ -7,6 +7,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { PostsModule } from './modules/posts/posts.module';
 import { UserModule } from './modules/users/user.module';
 import { LoadingModule } from 'ngx-loading';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 /** Router **/
 import { app_routing } from './router';
@@ -50,7 +52,13 @@ import { User } from './models/users/user'
     HttpClientModule,
     CommonModule,
     FormsModule,
-    LoadingModule
+    LoadingModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 1500,
+      positionClass: 'toast-bottom-full-width',
+      preventDuplicates: true,
+    })
   ],
   providers: [
     PostModel,

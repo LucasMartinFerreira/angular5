@@ -3,7 +3,6 @@ import { AppComponent} from './../../../app.component';
 import { PostModel } from "../../../models/posts/post.model"
 import { BlockListElementsComponent } from "./../../../components/block-list-elements/block-list-elements.component"
 import { PostService} from "../../../services/posts/post.service";
-//import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
 
@@ -24,7 +23,6 @@ export class PostListComponent implements OnInit {
   constructor(public postService: PostService,
               public router: Router,
               public appComponent : AppComponent,
-             // private toastr: ToastrService,
               public  postModel : PostModel) {
 
   };
