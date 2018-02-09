@@ -1,0 +1,17 @@
+<div class="content-block-list">
+
+  <ul *ngFor="let data of arrayList">
+
+    <div *ngIf="flagView === 'users'">
+      <app-users-list  class="content-block-list_item" [item]="data" [itemList]="arrayList"></app-users-list>
+    </div>
+    <div *ngIf="flagView === 'posts'">
+      <app-post-list  class="content-block-list_item" [item]="data" [itemList]="arrayList"></app-post-list>
+    </div>
+    <div *ngIf="flagView === 'commentsForUser'">
+      <app-post-comments  class="content-block-list_item" [item]="data" [itemList]="arrayList" ></app-post-comments>
+    </div>
+  </ul>
+</div>
+
+

@@ -1,19 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 
 /**Componentes**/
-import { PostListComponent } from './post-list/post-list.component';
 import { PostCreateAndEditComponent } from './post-create-and-edit/post-create-and-edit.component';
+
+/**Services**/
+
+import { PostService } from './../../services/posts/post.service';
+
 
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   declarations: [
-    PostListComponent,
     PostCreateAndEditComponent
+  ],
+  providers :[
+    PostService
   ]
 })
 export class PostsModule { }
