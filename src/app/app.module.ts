@@ -9,6 +9,7 @@ import { UserModule } from './modules/users/user.module';
 import { LoadingModule } from 'ngx-loading';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FilterPipe }          from './components/search/search.component';
 
 /** Router **/
 import { app_routing } from './router';
@@ -41,7 +42,8 @@ import { User } from './models/users/user'
     PostListComponent,
     UsersListComponent,
     BlockListElementsComponent,
-    PostCommentsComponent
+    PostCommentsComponent,
+    FilterPipe
   ],
   imports: [
     PostsModule,

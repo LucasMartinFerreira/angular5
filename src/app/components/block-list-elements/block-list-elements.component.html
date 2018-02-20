@@ -1,6 +1,9 @@
 <div class="content-block-list">
 
-  <ul *ngFor="let data of arrayList">
+  <label>Buscar por {{labelSearch}} :</label>
+  <input [(ngModel)]="searchText" >
+
+  <ul *ngFor="let data of arrayList|filter:filterSearch:searchText:currentDateTime">
 
     <div *ngIf="flagView === 'users'">
       <app-users-list  class="content-block-list_item" [item]="data" [itemList]="arrayList"></app-users-list>
