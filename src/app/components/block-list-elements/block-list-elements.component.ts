@@ -14,8 +14,11 @@ import { User } from "../../models/users/user"
 })
 export class BlockListElementsComponent implements OnInit {
   public existsUserData: boolean = false;
-
-  private arrayList = [];
+  public searchText: string;
+  public currentDateTime: any;
+  public arrayList = [];
+  public filterSearch : string
+  public labelSearch : string;
 
   private idPost : number;
 
@@ -38,13 +41,19 @@ export class BlockListElementsComponent implements OnInit {
       if(params.name === 'posts'){
         this.getAllPost();
         this.flagView = 'posts'
+        this.filterSearch ='body';
+        this.labelSearch = 'body';
       }else if(params.name ==='users'){
         this.getAllUsers();
         this.flagView = 'users'
+        this.filterSearch ='name';
+        this.labelSearch = 'Nombre';
       }else if(params.name ==='commentsForPost'){
         this.idPost = this.postModel.getPostId();
         this.getAllCommentsForPost()
         this.flagView = 'commentsForUser'
+        this.filterSearch ='email';
+        this.labelSearch = 'Email';
       }
     });
 
